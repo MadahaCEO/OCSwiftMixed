@@ -76,6 +76,11 @@
     [vm instanceMethod1WithName:@"娃哈哈"];
 
     [vm instanceMethod2WithName:@"娃哈哈" age:20 isTeacher:YES];
+    
+    NSInteger sum = [vm sumWithFirst:1 second:5];
+    NSLog(@"求和： %ld",(long)sum);
+    
+    
 }
 
 - (void)dmBtnTouched {

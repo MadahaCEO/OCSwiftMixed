@@ -46,6 +46,17 @@ import UIKit
     @objc public var name:String = ""
     
     
+    
+    
+//    convenience init(bookId:Int, bookName:String) {
+//        self.init()
+////        self = super.init()
+////        if self {
+////
+////        }
+////        return self;
+//    }
+    
     @objc public func instanceMethod() {
         print("OC 调用 Swift 实例方法")
     }
@@ -60,7 +71,13 @@ import UIKit
     }
     
     @objc public func instanceMethod2(name:String, age:Int, isTeacher:Bool) {
-           print("OC 调用 Swift 实例方法,带参数  name:\(name)   年龄\(age)   是否老师\(isTeacher)")
-       }
+        print("OC 调用 Swift 实例方法,带参数  name:\(name)   年龄\(age)   是否老师\(isTeacher)")
+    }
+    
+    @objc public func sum (first:Int, second:Int) -> Int {
+        print("OC 调用 Swift 实例方法,带参数  first:\(first)   second\(second) 求和, 并返回结果")
+        return first + second;
+    }
+    
     
 }
