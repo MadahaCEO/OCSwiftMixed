@@ -45,18 +45,7 @@ import UIKit
 
     @objc public var name:String = ""
     
-    
-    
-    
-//    convenience init(bookId:Int, bookName:String) {
-//        self.init()
-////        self = super.init()
-////        if self {
-////
-////        }
-////        return self;
-//    }
-    
+        
     @objc public func instanceMethod() {
         print("OC 调用 Swift 实例方法")
     }
@@ -70,6 +59,7 @@ import UIKit
         print("OC 调用 Swift 实例方法,带参数 \(name)")
     }
     
+    
     @objc public func instanceMethod2(name:String, age:Int, isTeacher:Bool) {
         print("OC 调用 Swift 实例方法,带参数  name:\(name)   年龄\(age)   是否老师\(isTeacher)")
     }
@@ -77,6 +67,42 @@ import UIKit
     @objc public func sum (first:Int, second:Int) -> Int {
         print("OC 调用 Swift 实例方法,带参数  first:\(first)   second\(second) 求和, 并返回结果")
         return first + second;
+    }
+    
+
+
+    
+    /*
+     以下划线  _  开头，OC 调用时 [vm instanceMethod3:@"参数1" closure:nil]
+     
+     如果没有下划线，OC 调用时 [vm instanceMethod3WithParam1:@"参数1" closure:nil]
+     */
+    @objc public func instanceMethod3(_ param1: String, closure: (() -> Void)? = nil) {
+       
+        if closure != nil {
+            closure!()
+        }
+    }
+    
+    @objc public func instanceMethod4(_ closure: ((_ name: String, _ age: Int) -> Void)? = nil) {
+        
+        if closure != nil {
+            closure!("name", 3)
+        }
+    }
+    
+    
+    var callback: (()->Void)?
+
+    @objc public func instanceMethod5(_ closure: (() -> Void)? = nil) {
+        callback = closure;
+    }
+    
+    @objc public func instanceMethod6() {
+
+        if callback != nil {
+            callback!()
+        }
     }
     
     

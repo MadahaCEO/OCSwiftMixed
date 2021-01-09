@@ -81,6 +81,30 @@
     NSLog(@"求和： %ld",(long)sum);
     
     
+
+    [vm instanceMethod3:@"参数1" closure:nil];
+    
+    [vm instanceMethod3:@"sdfsdf" closure:^{
+        NSLog(@"OC 调用 Swift 实例方法, swift 通过 闭包 回调 OC，且不带有参数");
+    }];
+    
+    
+    [vm instanceMethod4:^(NSString * _Nonnull name, NSInteger age) {
+        NSLog(@"OC 调用 Swift 实例方法, swift 通过 闭包 回调 OC，带有参数  %@   %ld",name,age);
+    }];
+    
+    /*
+     5 和 6 搭配验证
+     */
+    [vm instanceMethod5:^{
+        
+        NSLog(@"OC 调用 Swift 实例方法, swift 通过 闭包 回调 OC，模拟异步延迟调用");
+    }];
+    
+    [vm instanceMethod6];
+    
+    
+    
 }
 
 - (void)dmBtnTouched {
