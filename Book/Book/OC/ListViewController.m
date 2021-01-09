@@ -67,10 +67,15 @@
 - (void)vmBtnTouched {
     DetailViewModel *vm = [[DetailViewModel alloc] init];
     
+    vm.name = @"名字";
+    
     [vm instanceMethod];
     
     [DetailViewModel classMethod];
+    
+    [vm instanceMethod1WithName:@"娃哈哈"];
 
+    [vm instanceMethod2WithName:@"娃哈哈" age:20 isTeacher:YES];
 }
 
 - (void)dmBtnTouched {

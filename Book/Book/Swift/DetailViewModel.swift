@@ -43,6 +43,8 @@ import UIKit
  */
 @objc public class DetailViewModel: NSObject {
 
+    @objc public var name:String = ""
+    
     
     @objc public func instanceMethod() {
         print("OC 调用 Swift 实例方法")
@@ -50,9 +52,15 @@ import UIKit
     
     @objc public class func classMethod() {
         print("OC 调用 Swift 类方法")
-
     }
     
     
+    @objc public func instanceMethod1(name:String) {
+        print("OC 调用 Swift 实例方法,带参数 \(name)")
+    }
+    
+    @objc public func instanceMethod2(name:String, age:Int, isTeacher:Bool) {
+           print("OC 调用 Swift 实例方法,带参数  name:\(name)   年龄\(age)   是否老师\(isTeacher)")
+       }
     
 }
