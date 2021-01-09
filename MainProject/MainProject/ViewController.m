@@ -25,6 +25,8 @@
     self.title = @"插件化混编验证";
     self.view.backgroundColor = [UIColor whiteColor];
     
+    self.navigationController.navigationBar.translucent = NO;
+    
     [self.view addSubview:self.label];
     [self.label mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view);
@@ -45,7 +47,6 @@
         _label.text = @"任意点击空白处";
         _label.textAlignment = NSTextAlignmentCenter;
         _label.font = [UIFont  systemFontOfSize:20];
-        [self.view addSubview:_label];
     }
     return _label;
 }

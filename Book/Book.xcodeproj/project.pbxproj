@@ -20,6 +20,7 @@
 		18B5981025A96CD200B1FF52 /* DetailDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B5980F25A96CD200B1FF52 /* DetailDataModel.swift */; };
 		18B5981225A96CE500B1FF52 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B5981125A96CE500B1FF52 /* DetailView.swift */; };
 		18B5981425A96CF200B1FF52 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B5981325A96CF200B1FF52 /* DetailViewController.swift */; };
+		18B5981C25A976EB00B1FF52 /* module.modulemap in Sources */ = {isa = PBXBuildFile; fileRef = 18B5981B25A976EB00B1FF52 /* module.modulemap */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		18B5980F25A96CD200B1FF52 /* DetailDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailDataModel.swift; sourceTree = "<group>"; };
 		18B5981125A96CE500B1FF52 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		18B5981325A96CF200B1FF52 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		18B5981B25A976EB00B1FF52 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +87,7 @@
 				18B5980F25A96CD200B1FF52 /* DetailDataModel.swift */,
 				18B5981125A96CE500B1FF52 /* DetailView.swift */,
 				18B5981325A96CF200B1FF52 /* DetailViewController.swift */,
+				18B5981B25A976EB00B1FF52 /* module.modulemap */,
 			);
 			path = Swift;
 			sourceTree = "<group>";
@@ -194,6 +197,7 @@
 				18B5981225A96CE500B1FF52 /* DetailView.swift in Sources */,
 				18B5980A25A96C9400B1FF52 /* ListViewModel.m in Sources */,
 				18B5980E25A96CC300B1FF52 /* DetailViewModel.swift in Sources */,
+				18B5981C25A976EB00B1FF52 /* module.modulemap in Sources */,
 				18B5980625A96C9400B1FF52 /* ListView.m in Sources */,
 				18B5981425A96CF200B1FF52 /* DetailViewController.swift in Sources */,
 			);
