@@ -17,6 +17,19 @@
 import UIKit
 
 
+ 
+@objc public protocol DetailViewModelDelegate {
+    
+    // 默认required 必须实现
+    @objc func detailInfo()
+    // 可选实现，回调带参数
+    @objc optional func author(_ name: String) -> Void
+    // 回调带参数还要返回值
+    @objc func age(_ age: Int) -> Int
+
+}
+
+
 /*
  @objc 关键字
  1.相关的参量只能修饰类、类的成员(方法、属性等)、扩展以及只能被类实现的协议；
@@ -45,6 +58,8 @@ import UIKit
 
     @objc public var name:String = ""
     
+    @objc public var delegate : DetailViewModelDelegate?
+
         
     @objc public func instanceMethod() {
         print("OC 调用 Swift 实例方法")
@@ -106,4 +121,18 @@ import UIKit
     }
     
     
+    @objc public func instanceMethod7() {
+        print("OC 调用 Swift 实例方法, 验证回调")
+
+        if self.delegate != nil {
+            
+            self.delegate?.detailInfo()
+            
+            self.delegate?.author?("作者名称")
+            
+            let total = self.delegate?.age(5)
+            print("回调参数，得到返回值  " , total!)
+        }
+    }
+ 
 }

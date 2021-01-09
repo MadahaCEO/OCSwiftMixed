@@ -13,7 +13,7 @@
 #import <Masonry/Masonry.h>
 
 
-@interface ListViewController ()
+@interface ListViewController ()<DetailViewModelDelegate>
 
 @property(nonatomic, strong) UIButton *vmBtn;
 
@@ -66,6 +66,7 @@
 
 - (void)vmBtnTouched {
     DetailViewModel *vm = [[DetailViewModel alloc] init];
+    vm.delegate = self;
     
     vm.name = @"名字";
     
@@ -104,6 +105,7 @@
     [vm instanceMethod6];
     
     
+    [vm instanceMethod7];
     
 }
 
@@ -123,6 +125,30 @@
 }
 
 
+
+#pragma mark - Delegate
+
+//- (void)detailInfo {
+//
+//}
+
+- (void)author:(NSString *)name {
+    
+    NSLog(@"OC 调用 Swift 实例方法, swift 通过 协议 回调 OC，%@",name);
+
+}
+
+- (NSInteger)age:(NSInteger)age {
+    
+    NSLog(@"OC 调用 Swift 实例方法, swift 通过 协议 回调 OC，带参数，且要有返回值");
+
+    return 4 + age;
+}
+
+- (void)detailInfo {
+    NSLog(@"OC 调用 Swift 实例方法, swift 通过 协议 回调 OC，不带参数");
+
+}
 
 
 - (UIButton *)vmBtn {
@@ -167,13 +193,15 @@
 }
 
 /*
-#pragma mark - Navigation
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+
 
 @end
