@@ -8,11 +8,13 @@
 
 import UIKit
 
-class DetailViewController: UIViewController {
+@objc public class DetailViewController: UIViewController {
 
-    override func viewDidLoad() {
+    override public func viewDidLoad() {
         super.viewDidLoad()
 
+        self.title = "Swift Controller"
+        self.view.backgroundColor = UIColor.white
         // Do any additional setup after loading the view.
 //        open func present(_ viewControllerToPresent: UIViewController, animated flag: Bool, completion: (() -> Void)? = nil)
 //

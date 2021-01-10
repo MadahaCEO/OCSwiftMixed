@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		187C1B2425AABE060076DEDC /* SubViewViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 187C1B2225AABE060076DEDC /* SubViewViewController.h */; };
+		187C1B2525AABE060076DEDC /* SubViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 187C1B2325AABE060076DEDC /* SubViewViewController.m */; };
 		18B597DA25A96B4900B1FF52 /* Book.h in Headers */ = {isa = PBXBuildFile; fileRef = 18B597D825A96B4900B1FF52 /* Book.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		18B5980525A96C9400B1FF52 /* ListViewModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 18B597FD25A96C9300B1FF52 /* ListViewModel.h */; };
 		18B5980625A96C9400B1FF52 /* ListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B597FE25A96C9300B1FF52 /* ListView.m */; };
@@ -24,6 +26,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		187C1B2225AABE060076DEDC /* SubViewViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SubViewViewController.h; sourceTree = "<group>"; };
+		187C1B2325AABE060076DEDC /* SubViewViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SubViewViewController.m; sourceTree = "<group>"; };
 		18B597D525A96B4900B1FF52 /* Book.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Book.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		18B597D825A96B4900B1FF52 /* Book.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Book.h; sourceTree = "<group>"; };
 		18B597D925A96B4900B1FF52 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -103,6 +107,8 @@
 				18B5980425A96C9300B1FF52 /* ListDataModel.m */,
 				18B5980325A96C9300B1FF52 /* ListViewController.h */,
 				18B5980025A96C9300B1FF52 /* ListViewController.m */,
+				187C1B2225AABE060076DEDC /* SubViewViewController.h */,
+				187C1B2325AABE060076DEDC /* SubViewViewController.m */,
 			);
 			path = OC;
 			sourceTree = "<group>";
@@ -115,6 +121,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				18B5980B25A96C9400B1FF52 /* ListViewController.h in Headers */,
+				187C1B2425AABE060076DEDC /* SubViewViewController.h in Headers */,
 				18B597DA25A96B4900B1FF52 /* Book.h in Headers */,
 				18B5980725A96C9400B1FF52 /* ListDataModel.h in Headers */,
 				18B5980525A96C9400B1FF52 /* ListViewModel.h in Headers */,
@@ -191,6 +198,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				187C1B2525AABE060076DEDC /* SubViewViewController.m in Sources */,
 				18B5981025A96CD200B1FF52 /* DetailDataModel.swift in Sources */,
 				18B5980825A96C9400B1FF52 /* ListViewController.m in Sources */,
 				18B5980C25A96C9400B1FF52 /* ListDataModel.m in Sources */,

@@ -9,8 +9,9 @@
 #import "ListViewController.h"
 // 这个文件是系统默认创建的，可以通过编译查看编译后的framework中就包含子文件。通过引入这个文件可以调用swift类
 #import <Book/Book-Swift.h>
-
 #import <Masonry/Masonry.h>
+
+#import "SubViewViewController.h"
 
 
 @interface ListViewController ()<DetailViewModelDelegate>
@@ -127,13 +128,15 @@
 }
 
 - (void)viewBtnTouched {
-    
-    
+    SubViewViewController *subVC = [[SubViewViewController alloc] init];
+    [self.navigationController pushViewController:subVC animated:YES];
 }
 
 - (void)controllerBtnTouched {
     
-    
+    DetailViewController *subVC = [[DetailViewController alloc] init];
+      [self.navigationController pushViewController:subVC animated:YES];
+
 }
 
 
