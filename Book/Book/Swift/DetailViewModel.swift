@@ -32,9 +32,12 @@ import UIKit
 
 /*
  @objc 关键字
- 1.相关的参量只能修饰类、类的成员(方法、属性等)、扩展以及只能被类实现的协议；
+ 1.只能修饰类、类的成员(方法、属性等)、扩展以及只能被类实现的协议；
  2.主要是为了能够让OC调用；
  
+ @objcMembers：将类中的所有方法暴露给Objc (效果等同于为所有方法加上@objc)，
+               如此 所有方法都不再需要添加@objc关键字修饰都可以被外部调用
+
  open：修饰的类可以在本某块(sdk),或者其他引入本模块的(sdk,module)继承，
        如果是修饰属性的话可以被此模块或引入了此某块(sdk)的模块（sdk）所重写
 
@@ -54,6 +57,7 @@ import UIKit
             如果你的类中的变量定义成了private那么这个变量在你这个类在这个类的文件的拓展中就无法访问了，
             这时就需要定义为fileprivate)
  */
+
 @objc public class DetailViewModel: NSObject {
 
     @objc public var name:String = ""

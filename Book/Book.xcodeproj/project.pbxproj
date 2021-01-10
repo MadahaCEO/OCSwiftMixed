@@ -87,7 +87,6 @@
 				18B5980F25A96CD200B1FF52 /* DetailDataModel.swift */,
 				18B5981125A96CE500B1FF52 /* DetailView.swift */,
 				18B5981325A96CF200B1FF52 /* DetailViewController.swift */,
-				18B5981B25A976EB00B1FF52 /* module.modulemap */,
 			);
 			path = Swift;
 			sourceTree = "<group>";
@@ -95,6 +94,7 @@
 		18B597FC25A96C9300B1FF52 /* OC */ = {
 			isa = PBXGroup;
 			children = (
+				18B5981B25A976EB00B1FF52 /* module.modulemap */,
 				18B5980125A96C9300B1FF52 /* ListView.h */,
 				18B597FE25A96C9300B1FF52 /* ListView.m */,
 				18B597FD25A96C9300B1FF52 /* ListViewModel.h */,

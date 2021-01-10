@@ -111,7 +111,19 @@
 
 - (void)dmBtnTouched {
     
+    NSDictionary *dic = @{
+        @"name":@"娃哈哈",
+        @"pageCount":@(20),
+        @"type":@"history",
+    };
     
+    DetailDataModel *dataModel = [[DetailDataModel alloc] initWithBook:dic];
+    
+    NSLog(@"name: %@  - pageCount: %ld  -  type: %@  -  all: %@",
+          dataModel.name,
+          (long)dataModel.pageCount,
+          dataModel.type,
+          dataModel.all);
 }
 
 - (void)viewBtnTouched {
