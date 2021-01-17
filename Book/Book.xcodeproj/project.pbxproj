@@ -23,6 +23,8 @@
 		18B5981225A96CE500B1FF52 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B5981125A96CE500B1FF52 /* DetailView.swift */; };
 		18B5981425A96CF200B1FF52 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B5981325A96CF200B1FF52 /* DetailViewController.swift */; };
 		18B5981C25A976EB00B1FF52 /* module.modulemap in Sources */ = {isa = PBXBuildFile; fileRef = 18B5981B25A976EB00B1FF52 /* module.modulemap */; };
+		18DFDD4625B3EB2800E26EF2 /* ThirdViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 18DFDD4425B3EB2800E26EF2 /* ThirdViewController.h */; };
+		18DFDD4725B3EB2800E26EF2 /* ThirdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DFDD4525B3EB2800E26EF2 /* ThirdViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +46,8 @@
 		18B5981125A96CE500B1FF52 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		18B5981325A96CF200B1FF52 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		18B5981B25A976EB00B1FF52 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
+		18DFDD4425B3EB2800E26EF2 /* ThirdViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ThirdViewController.h; sourceTree = "<group>"; };
+		18DFDD4525B3EB2800E26EF2 /* ThirdViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ThirdViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +113,8 @@
 				18B5980025A96C9300B1FF52 /* ListViewController.m */,
 				187C1B2225AABE060076DEDC /* SubViewViewController.h */,
 				187C1B2325AABE060076DEDC /* SubViewViewController.m */,
+				18DFDD4425B3EB2800E26EF2 /* ThirdViewController.h */,
+				18DFDD4525B3EB2800E26EF2 /* ThirdViewController.m */,
 			);
 			path = OC;
 			sourceTree = "<group>";
@@ -123,6 +129,7 @@
 				18B5980B25A96C9400B1FF52 /* ListViewController.h in Headers */,
 				187C1B2425AABE060076DEDC /* SubViewViewController.h in Headers */,
 				18B597DA25A96B4900B1FF52 /* Book.h in Headers */,
+				18DFDD4625B3EB2800E26EF2 /* ThirdViewController.h in Headers */,
 				18B5980725A96C9400B1FF52 /* ListDataModel.h in Headers */,
 				18B5980525A96C9400B1FF52 /* ListViewModel.h in Headers */,
 				18B5980925A96C9400B1FF52 /* ListView.h in Headers */,
@@ -203,6 +210,7 @@
 				18B5980825A96C9400B1FF52 /* ListViewController.m in Sources */,
 				18B5980C25A96C9400B1FF52 /* ListDataModel.m in Sources */,
 				18B5981225A96CE500B1FF52 /* DetailView.swift in Sources */,
+				18DFDD4725B3EB2800E26EF2 /* ThirdViewController.m in Sources */,
 				18B5980A25A96C9400B1FF52 /* ListViewModel.m in Sources */,
 				18B5980E25A96CC300B1FF52 /* DetailViewModel.swift in Sources */,
 				18B5981C25A976EB00B1FF52 /* module.modulemap in Sources */,
@@ -349,6 +357,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.mdh.Book;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/BooK/OC";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -374,6 +383,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.mdh.Book;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/BooK/OC";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

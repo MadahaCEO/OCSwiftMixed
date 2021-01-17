@@ -135,7 +135,7 @@
 - (void)controllerBtnTouched {
     
     DetailViewController *subVC = [[DetailViewController alloc] init];
-      [self.navigationController pushViewController:subVC animated:YES];
+    [self.navigationController pushViewController:subVC animated:YES];
 
 }
 
