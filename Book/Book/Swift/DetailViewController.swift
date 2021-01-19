@@ -11,6 +11,7 @@ import Masonry
 import MDH
 
 
+
 /*
  参考资料
  https://zhuanlan.zhihu.com/p/94610842?from_voters_page=true
@@ -50,8 +51,30 @@ import MDH
             make?.height.equalTo()(40)
         }
        
+        
+        let btn = UIButton.init(type: .custom)
+        btn.backgroundColor = .red
+        btn.setTitleColor(.black, for: .normal)
+        btn.setTitle("present swift Controller", for: .normal)
+        btn.titleLabel?.textAlignment = .center
+        btn.addTarget(self, action: #selector(presentSwiftVC), for: .touchUpInside)
+        self.view.addSubview(btn)
+        btn.mas_makeConstraints { (make) in
+            make?.top.equalTo()(self.label3.mas_bottom)?.offset()(10)
+            make?.left.right()?.equalTo()(self.view)
+            make?.height.equalTo()(40)
+        }
     }
     
+    
+    @objc func presentSwiftVC() {
+        
+        let searchVC = SearchViewController.init()
+        let nav = UINavigationController.init(rootViewController: searchVC)
+        nav.modalPresentationStyle = .overFullScreen
+        self.present(nav, animated: true, completion: nil)
+        
+    }
     
     /**
     用懒加载来避免可选型
@@ -93,6 +116,7 @@ import MDH
         let controller = ThirdViewController.init()
         self.navigationController?.pushViewController(controller, animated: true)
         
+       
     }
 
     /*

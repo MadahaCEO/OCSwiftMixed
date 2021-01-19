@@ -25,6 +25,21 @@
 		18B5981C25A976EB00B1FF52 /* module.modulemap in Sources */ = {isa = PBXBuildFile; fileRef = 18B5981B25A976EB00B1FF52 /* module.modulemap */; };
 		18DFDD4625B3EB2800E26EF2 /* ThirdViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 18DFDD4425B3EB2800E26EF2 /* ThirdViewController.h */; };
 		18DFDD4725B3EB2800E26EF2 /* ThirdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DFDD4525B3EB2800E26EF2 /* ThirdViewController.m */; };
+		18DFDD4925B70DDF00E26EF2 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DFDD4825B70DDF00E26EF2 /* SearchViewController.swift */; };
+		18DFDD5925B7143600E26EF2 /* MDHPinyinHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DFDD4B25B7143500E26EF2 /* MDHPinyinHelper.m */; };
+		18DFDD5A25B7143600E26EF2 /* MDHPinYin4Objc.h in Headers */ = {isa = PBXBuildFile; fileRef = 18DFDD4C25B7143500E26EF2 /* MDHPinYin4Objc.h */; };
+		18DFDD5B25B7143600E26EF2 /* MDHHanyuPinyinOutputFormat.h in Headers */ = {isa = PBXBuildFile; fileRef = 18DFDD4D25B7143500E26EF2 /* MDHHanyuPinyinOutputFormat.h */; };
+		18DFDD5C25B7143600E26EF2 /* MDH_unicode_to_hanyu_pinyin.txt in Resources */ = {isa = PBXBuildFile; fileRef = 18DFDD4E25B7143500E26EF2 /* MDH_unicode_to_hanyu_pinyin.txt */; };
+		18DFDD5D25B7143600E26EF2 /* MDHChinesePinyinManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DFDD4F25B7143500E26EF2 /* MDHChinesePinyinManager.m */; };
+		18DFDD5E25B7143600E26EF2 /* NSString+MDHPinYin4Cocoa.h in Headers */ = {isa = PBXBuildFile; fileRef = 18DFDD5025B7143500E26EF2 /* NSString+MDHPinYin4Cocoa.h */; };
+		18DFDD5F25B7143600E26EF2 /* MDHPinyinFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = 18DFDD5125B7143500E26EF2 /* MDHPinyinFormatter.h */; };
+		18DFDD6025B7143600E26EF2 /* MDHChineseToPinyinResource.h in Headers */ = {isa = PBXBuildFile; fileRef = 18DFDD5225B7143500E26EF2 /* MDHChineseToPinyinResource.h */; };
+		18DFDD6125B7143600E26EF2 /* MDHHanyuPinyinOutputFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DFDD5325B7143500E26EF2 /* MDHHanyuPinyinOutputFormat.m */; };
+		18DFDD6225B7143600E26EF2 /* MDHPinyinHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 18DFDD5425B7143500E26EF2 /* MDHPinyinHelper.h */; };
+		18DFDD6325B7143600E26EF2 /* MDHPinyinFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DFDD5525B7143500E26EF2 /* MDHPinyinFormatter.m */; };
+		18DFDD6425B7143600E26EF2 /* NSString+MDHPinYin4Cocoa.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DFDD5625B7143500E26EF2 /* NSString+MDHPinYin4Cocoa.m */; };
+		18DFDD6525B7143600E26EF2 /* MDHChinesePinyinManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 18DFDD5725B7143500E26EF2 /* MDHChinesePinyinManager.h */; };
+		18DFDD6625B7143600E26EF2 /* MDHChineseToPinyinResource.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DFDD5825B7143500E26EF2 /* MDHChineseToPinyinResource.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +63,21 @@
 		18B5981B25A976EB00B1FF52 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
 		18DFDD4425B3EB2800E26EF2 /* ThirdViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ThirdViewController.h; sourceTree = "<group>"; };
 		18DFDD4525B3EB2800E26EF2 /* ThirdViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ThirdViewController.m; sourceTree = "<group>"; };
+		18DFDD4825B70DDF00E26EF2 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		18DFDD4B25B7143500E26EF2 /* MDHPinyinHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDHPinyinHelper.m; sourceTree = "<group>"; };
+		18DFDD4C25B7143500E26EF2 /* MDHPinYin4Objc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDHPinYin4Objc.h; sourceTree = "<group>"; };
+		18DFDD4D25B7143500E26EF2 /* MDHHanyuPinyinOutputFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDHHanyuPinyinOutputFormat.h; sourceTree = "<group>"; };
+		18DFDD4E25B7143500E26EF2 /* MDH_unicode_to_hanyu_pinyin.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = MDH_unicode_to_hanyu_pinyin.txt; sourceTree = "<group>"; };
+		18DFDD4F25B7143500E26EF2 /* MDHChinesePinyinManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDHChinesePinyinManager.m; sourceTree = "<group>"; };
+		18DFDD5025B7143500E26EF2 /* NSString+MDHPinYin4Cocoa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MDHPinYin4Cocoa.h"; sourceTree = "<group>"; };
+		18DFDD5125B7143500E26EF2 /* MDHPinyinFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDHPinyinFormatter.h; sourceTree = "<group>"; };
+		18DFDD5225B7143500E26EF2 /* MDHChineseToPinyinResource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDHChineseToPinyinResource.h; sourceTree = "<group>"; };
+		18DFDD5325B7143500E26EF2 /* MDHHanyuPinyinOutputFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDHHanyuPinyinOutputFormat.m; sourceTree = "<group>"; };
+		18DFDD5425B7143500E26EF2 /* MDHPinyinHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDHPinyinHelper.h; sourceTree = "<group>"; };
+		18DFDD5525B7143500E26EF2 /* MDHPinyinFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDHPinyinFormatter.m; sourceTree = "<group>"; };
+		18DFDD5625B7143500E26EF2 /* NSString+MDHPinYin4Cocoa.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MDHPinYin4Cocoa.m"; sourceTree = "<group>"; };
+		18DFDD5725B7143500E26EF2 /* MDHChinesePinyinManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDHChinesePinyinManager.h; sourceTree = "<group>"; };
+		18DFDD5825B7143500E26EF2 /* MDHChineseToPinyinResource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDHChineseToPinyinResource.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +125,7 @@
 				18B5980F25A96CD200B1FF52 /* DetailDataModel.swift */,
 				18B5981125A96CE500B1FF52 /* DetailView.swift */,
 				18B5981325A96CF200B1FF52 /* DetailViewController.swift */,
+				18DFDD4825B70DDF00E26EF2 /* SearchViewController.swift */,
 			);
 			path = Swift;
 			sourceTree = "<group>";
@@ -102,6 +133,7 @@
 		18B597FC25A96C9300B1FF52 /* OC */ = {
 			isa = PBXGroup;
 			children = (
+				18DFDD4A25B7143500E26EF2 /* PinYin */,
 				18B5981B25A976EB00B1FF52 /* module.modulemap */,
 				18B5980125A96C9300B1FF52 /* ListView.h */,
 				18B597FE25A96C9300B1FF52 /* ListView.m */,
@@ -119,6 +151,27 @@
 			path = OC;
 			sourceTree = "<group>";
 		};
+		18DFDD4A25B7143500E26EF2 /* PinYin */ = {
+			isa = PBXGroup;
+			children = (
+				18DFDD4B25B7143500E26EF2 /* MDHPinyinHelper.m */,
+				18DFDD4C25B7143500E26EF2 /* MDHPinYin4Objc.h */,
+				18DFDD4D25B7143500E26EF2 /* MDHHanyuPinyinOutputFormat.h */,
+				18DFDD4E25B7143500E26EF2 /* MDH_unicode_to_hanyu_pinyin.txt */,
+				18DFDD4F25B7143500E26EF2 /* MDHChinesePinyinManager.m */,
+				18DFDD5025B7143500E26EF2 /* NSString+MDHPinYin4Cocoa.h */,
+				18DFDD5125B7143500E26EF2 /* MDHPinyinFormatter.h */,
+				18DFDD5225B7143500E26EF2 /* MDHChineseToPinyinResource.h */,
+				18DFDD5325B7143500E26EF2 /* MDHHanyuPinyinOutputFormat.m */,
+				18DFDD5425B7143500E26EF2 /* MDHPinyinHelper.h */,
+				18DFDD5525B7143500E26EF2 /* MDHPinyinFormatter.m */,
+				18DFDD5625B7143500E26EF2 /* NSString+MDHPinYin4Cocoa.m */,
+				18DFDD5725B7143500E26EF2 /* MDHChinesePinyinManager.h */,
+				18DFDD5825B7143500E26EF2 /* MDHChineseToPinyinResource.m */,
+			);
+			path = PinYin;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -126,12 +179,19 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18DFDD5E25B7143600E26EF2 /* NSString+MDHPinYin4Cocoa.h in Headers */,
+				18DFDD5A25B7143600E26EF2 /* MDHPinYin4Objc.h in Headers */,
+				18DFDD5F25B7143600E26EF2 /* MDHPinyinFormatter.h in Headers */,
+				18DFDD5B25B7143600E26EF2 /* MDHHanyuPinyinOutputFormat.h in Headers */,
 				18B5980B25A96C9400B1FF52 /* ListViewController.h in Headers */,
 				187C1B2425AABE060076DEDC /* SubViewViewController.h in Headers */,
 				18B597DA25A96B4900B1FF52 /* Book.h in Headers */,
 				18DFDD4625B3EB2800E26EF2 /* ThirdViewController.h in Headers */,
+				18DFDD6025B7143600E26EF2 /* MDHChineseToPinyinResource.h in Headers */,
+				18DFDD6525B7143600E26EF2 /* MDHChinesePinyinManager.h in Headers */,
 				18B5980725A96C9400B1FF52 /* ListDataModel.h in Headers */,
 				18B5980525A96C9400B1FF52 /* ListViewModel.h in Headers */,
+				18DFDD6225B7143600E26EF2 /* MDHPinyinHelper.h in Headers */,
 				18B5980925A96C9400B1FF52 /* ListView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -195,6 +255,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18DFDD5C25B7143600E26EF2 /* MDH_unicode_to_hanyu_pinyin.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -207,12 +268,19 @@
 			files = (
 				187C1B2525AABE060076DEDC /* SubViewViewController.m in Sources */,
 				18B5981025A96CD200B1FF52 /* DetailDataModel.swift in Sources */,
+				18DFDD6125B7143600E26EF2 /* MDHHanyuPinyinOutputFormat.m in Sources */,
+				18DFDD6325B7143600E26EF2 /* MDHPinyinFormatter.m in Sources */,
 				18B5980825A96C9400B1FF52 /* ListViewController.m in Sources */,
 				18B5980C25A96C9400B1FF52 /* ListDataModel.m in Sources */,
 				18B5981225A96CE500B1FF52 /* DetailView.swift in Sources */,
 				18DFDD4725B3EB2800E26EF2 /* ThirdViewController.m in Sources */,
+				18DFDD4925B70DDF00E26EF2 /* SearchViewController.swift in Sources */,
+				18DFDD6625B7143600E26EF2 /* MDHChineseToPinyinResource.m in Sources */,
+				18DFDD5925B7143600E26EF2 /* MDHPinyinHelper.m in Sources */,
+				18DFDD6425B7143600E26EF2 /* NSString+MDHPinYin4Cocoa.m in Sources */,
 				18B5980A25A96C9400B1FF52 /* ListViewModel.m in Sources */,
 				18B5980E25A96CC300B1FF52 /* DetailViewModel.swift in Sources */,
+				18DFDD5D25B7143600E26EF2 /* MDHChinesePinyinManager.m in Sources */,
 				18B5981C25A976EB00B1FF52 /* module.modulemap in Sources */,
 				18B5980625A96C9400B1FF52 /* ListView.m in Sources */,
 				18B5981425A96CF200B1FF52 /* DetailViewController.swift in Sources */,
