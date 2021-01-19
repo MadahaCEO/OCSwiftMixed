@@ -22,6 +22,11 @@
       
       self.title = @"Swift Controller push OC Controller";
 
+//    MDHChinesePinyinManager *manager = [[MDHChinesePinyinManager alloc] init];
+//       NSArray *array =  [manager firstLetters:@"行"];
+//    MDHChinesePinyinManager *manager = [[MDHChinesePinyinManager alloc] init];
+//       NSArray *array =  [manager toPinyin:@"李长行"];
+    
 }
 
 /*
