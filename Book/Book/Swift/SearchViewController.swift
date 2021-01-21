@@ -29,7 +29,10 @@ class SearchViewController: UIViewController,UITableViewDelegate,UITableViewData
             make?.edges.equalTo()(self.view)
         }
 
-        
+        let result = ConverToPinyin.sharedInstance.object("刘奇")
+        print(result.fullPinyin,result.regularPinyin)
+//        ConverToPinyin.sharedInstance.object("刘贝贝")
+
     }
     
     

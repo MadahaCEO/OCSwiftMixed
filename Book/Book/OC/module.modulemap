@@ -1,6 +1,7 @@
 module MDH {
   
   header "ThirdViewController.h"
+  header "./PinYin/MDHChinesePinyinManager.h"
 
   export *
 }

@@ -8,7 +8,7 @@
 
 #import "MDHChinesePinyinManager.h"
 #import "MDHPinYin4Objc.h"
-#import "NSString+MDHFoundation.h"
+//#import "NSString+MDHFoundation.h"
 
 @interface MDHChinesePinyinManager ()
 {
@@ -44,13 +44,21 @@
     return  self;
 }
 
-
+- (BOOL)regexCheck:(NSString *)string {
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",@"^[\u4e00-\u9fa5]+$"];
+    BOOL valid = [predicate evaluateWithObject: string];
+    
+    return valid;
+}
 
 - (NSArray *)firstLetters:(NSString *)string {
 
     NSMutableArray *dataSource = [NSMutableArray array];
     
-    if (string.valid && string.regex_allChinese) {
+    if ([string isKindOfClass:[NSString class]] &&
+        string.length > 0 &&
+        [self regexCheck:string]) {
         
         NSMutableArray* result = [NSMutableArray array];
         NSArray *array_data    = [MDHPinyinHelper getPinyinWithHanzi:string
@@ -84,7 +92,9 @@
     
     NSMutableArray *dataSource = [NSMutableArray array];
     
-    if (string.valid && string.regex_allChinese) {
+    if ([string isKindOfClass:[NSString class]] &&
+        string.length > 0 &&
+        [self regexCheck:string]) {
         
         NSMutableArray* result = [NSMutableArray array];
         NSArray *array_data    = [MDHPinyinHelper getPinyinWithHanzi:string

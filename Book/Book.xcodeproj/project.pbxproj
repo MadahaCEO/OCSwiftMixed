@@ -40,6 +40,8 @@
 		18DFDD6425B7143600E26EF2 /* NSString+MDHPinYin4Cocoa.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DFDD5625B7143500E26EF2 /* NSString+MDHPinYin4Cocoa.m */; };
 		18DFDD6525B7143600E26EF2 /* MDHChinesePinyinManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 18DFDD5725B7143500E26EF2 /* MDHChinesePinyinManager.h */; };
 		18DFDD6625B7143600E26EF2 /* MDHChineseToPinyinResource.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DFDD5825B7143500E26EF2 /* MDHChineseToPinyinResource.m */; };
+		18DFDD6825B9B13D00E26EF2 /* DataBaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DFDD6725B9B13D00E26EF2 /* DataBaseManager.swift */; };
+		18DFDD6A25B9B17400E26EF2 /* ConverToPinyin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DFDD6925B9B17400E26EF2 /* ConverToPinyin.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -78,6 +80,8 @@
 		18DFDD5625B7143500E26EF2 /* NSString+MDHPinYin4Cocoa.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MDHPinYin4Cocoa.m"; sourceTree = "<group>"; };
 		18DFDD5725B7143500E26EF2 /* MDHChinesePinyinManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDHChinesePinyinManager.h; sourceTree = "<group>"; };
 		18DFDD5825B7143500E26EF2 /* MDHChineseToPinyinResource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDHChineseToPinyinResource.m; sourceTree = "<group>"; };
+		18DFDD6725B9B13D00E26EF2 /* DataBaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseManager.swift; sourceTree = "<group>"; };
+		18DFDD6925B9B17400E26EF2 /* ConverToPinyin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverToPinyin.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +130,8 @@
 				18B5981125A96CE500B1FF52 /* DetailView.swift */,
 				18B5981325A96CF200B1FF52 /* DetailViewController.swift */,
 				18DFDD4825B70DDF00E26EF2 /* SearchViewController.swift */,
+				18DFDD6725B9B13D00E26EF2 /* DataBaseManager.swift */,
+				18DFDD6925B9B17400E26EF2 /* ConverToPinyin.swift */,
 			);
 			path = Swift;
 			sourceTree = "<group>";
@@ -268,6 +274,7 @@
 			files = (
 				187C1B2525AABE060076DEDC /* SubViewViewController.m in Sources */,
 				18B5981025A96CD200B1FF52 /* DetailDataModel.swift in Sources */,
+				18DFDD6A25B9B17400E26EF2 /* ConverToPinyin.swift in Sources */,
 				18DFDD6125B7143600E26EF2 /* MDHHanyuPinyinOutputFormat.m in Sources */,
 				18DFDD6325B7143600E26EF2 /* MDHPinyinFormatter.m in Sources */,
 				18B5980825A96C9400B1FF52 /* ListViewController.m in Sources */,
@@ -282,6 +289,7 @@
 				18B5980E25A96CC300B1FF52 /* DetailViewModel.swift in Sources */,
 				18DFDD5D25B7143600E26EF2 /* MDHChinesePinyinManager.m in Sources */,
 				18B5981C25A976EB00B1FF52 /* module.modulemap in Sources */,
+				18DFDD6825B9B13D00E26EF2 /* DataBaseManager.swift in Sources */,
 				18B5980625A96C9400B1FF52 /* ListView.m in Sources */,
 				18B5981425A96CF200B1FF52 /* DetailViewController.swift in Sources */,
 			);
