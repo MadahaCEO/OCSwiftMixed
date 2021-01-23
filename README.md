@@ -62,3 +62,5 @@ module MDH {
 准备工作完成后，那么就可以直接在swift中引用了吗？这个时候需要记住，新建的这个modulemap属于外来的，要让编译器知道他，并找到他，故 需要设置 【Build Settings】 -> 【Swift Compiler-Search Paths】->【Import Path】
 
 最后，编译一下，在swift类中引入 import MDH ，就可以直接调用 ThirdViewController 类了。
+
+针对modulemap格式及用法介绍的介绍：https://www.jianshu.com/p/ce49d8f32f77
