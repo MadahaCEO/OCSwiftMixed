@@ -20,7 +20,8 @@ ABI稳定之后，OS发行商就可以把Swift标准库和运行时作为操作�
 Apple 通过 App Thinning 帮我们完成的，不需要开发者操心。在提交 app 时，Apple 将会按照 iOS 系统创建不同的下载包。对于 iOS 12.2 的系统，因为它们预装了 Swift 5 的 runtime，所以不再需要 Swift 的库，它们会被从 app bundle 中删掉。对于 iOS 12.2 以下的系统，外甥打灯笼，照旧。（Always Embed Swift Standard Libraries 选择YES）
 
 
-动态库 Framework 内 Swift调用OC源码
+三、动态库 Framework 内 Swift调用OC源码
+
 参考：http://www.cocoachina.com/articles/19022
 无需将 OC 类公开出去，而是通过module的形式引用
 
