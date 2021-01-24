@@ -33,12 +33,6 @@ class SearchViewController: UIViewController,UITableViewDelegate,UITableViewData
         print(result.fullPinyin,result.regularPinyin)
 //        ConverToPinyin.sharedInstance.object("刘贝贝")
 
-        let contacts = [["刘备","liubei","0l,0liu,1b,1be,1bei"],
-                        ["关羽","guanyu","0g,0guan,1y,1yu"],
-                        ["张飞","zhangfei","0z,0zhang,1f,1fe,1fei"]]
-        
-        DataBaseManager.sharedInstance.createTable()
-        DataBaseManager.sharedInstance.insertContacts(contacts)
         
     }
     
