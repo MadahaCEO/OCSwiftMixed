@@ -88,54 +88,81 @@ import MDH
             
             print("currentThread: \(Thread.current)")
 
-            let path = Bundle(for: DetailViewController.self).path(forResource: "MDH_unicode_to_hanyu_pinyin", ofType: "txt")
-
-            print("pinyin file path: \(path!)")
-
-            var pinyin:String = String()
-            
-            do {
-                pinyin = try String(contentsOfFile: path!, encoding: String.Encoding.utf8)
-            } catch {}
-            
-            
-            var pinyinArr:[String] = []
-            pinyin.enumerateLines { (line, _) in
-
-                let tempArr = self.pickPinyin(line)
-                for item in tempArr {
-                    if !pinyinArr.contains(item) {
-                        pinyinArr.append(item)
-                    }
-                }
-            }
-            
-//            print(pinyinArr)
-            
             var pinyinDic:[String:Array<String>] = [:]
 
+            
+            let dataPath = NSHomeDirectory() + "/Documents/" + "pinyin"
+            let url = NSURL.fileURL(withPath: dataPath)
+                    
+            let exists = FileManager.default.fileExists(atPath: dataPath)
+            if exists {
+                
+                let data = try! Data.init(contentsOf: url, options: Data.ReadingOptions.uncached)
+               
+                pinyinDic = try! NSKeyedUnarchiver.unarchivedObject(ofClasses: [NSDictionary.self, NSArray.self] , from: data) as! [String : Array<String>]
 
-            for item in pinyinArr {
+//                pinyinDic = try! NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data) as! [String : Array<String>]
                 
-                let firstLetter = String(item.prefix(1))
+                print("read local pinyin file : \(pinyinDic)")
+
+            } else {
                 
-                if pinyinDic.keys.contains(firstLetter) {
-                    var arr = pinyinDic[firstLetter]!
-                    if !arr.contains(item) {
-                        arr.append(item)
-                        pinyinDic[firstLetter] = arr
+                let path = Bundle(for: DetailViewController.self).path(forResource: "MDH_unicode_to_hanyu_pinyin", ofType: "txt")
+                
+                print("pinyin file path: \(path!)")
+                
+                var pinyin:String = String()
+                
+                do {
+                    pinyin = try String(contentsOfFile: path!, encoding: String.Encoding.utf8)
+                } catch {}
+                
+                
+                var pinyinArr:[String] = []
+                pinyin.enumerateLines { (line, _) in
+                    
+                    let tempArr = self.pickPinyin(line)
+                    for item in tempArr {
+                        if !pinyinArr.contains(item) {
+                            pinyinArr.append(item)
+                        }
                     }
-                } else {
-                    let filterArr:[String] = []
-                    pinyinDic[firstLetter] = filterArr
                 }
+                
+                //            print(pinyinArr)
+                
+                
+                
+                for item in pinyinArr {
+                    
+                    let firstLetter = String(item.prefix(1))
+                    
+                    if pinyinDic.keys.contains(firstLetter) {
+                        var arr = pinyinDic[firstLetter]!
+                        if !arr.contains(item) {
+                            arr.append(item)
+                            pinyinDic[firstLetter] = arr
+                        }
+                    } else {
+                        let filterArr:[String] = []
+                        pinyinDic[firstLetter] = filterArr
+                    }
+                }
+                
+                //            print(pinyinDic)
+                
+                do {
+                    
+                    let pinyinData = try! NSKeyedArchiver.archivedData(withRootObject: pinyinDic, requiringSecureCoding: true)
+                    
+                    
+                    try! pinyinData.write(to: url, options: Data.WritingOptions.atomic)
+                    
+                } catch {}
+                
+                
             }
 
-            print(pinyinDic)
-
-        
-            
-            
             let contacts = [["刘备","liubei","0l,0liu,1b,1be,1bei"],
                             ["关羽","guanyu","0g,0guan,1y,1yu"],
                             ["张飞","zhangfei","0z,0zhang,1f,1fe,1fei"]]
