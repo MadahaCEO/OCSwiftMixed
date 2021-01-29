@@ -42,6 +42,7 @@
 		18DFDD6625B7143600E26EF2 /* MDHChineseToPinyinResource.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DFDD5825B7143500E26EF2 /* MDHChineseToPinyinResource.m */; };
 		18DFDD6825B9B13D00E26EF2 /* DataBaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DFDD6725B9B13D00E26EF2 /* DataBaseManager.swift */; };
 		18DFDD6A25B9B17400E26EF2 /* ConverToPinyin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DFDD6925B9B17400E26EF2 /* ConverToPinyin.swift */; };
+		18DFDD6C25C43CC100E26EF2 /* PinyinManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DFDD6B25C43CC100E26EF2 /* PinyinManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -82,6 +83,7 @@
 		18DFDD5825B7143500E26EF2 /* MDHChineseToPinyinResource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDHChineseToPinyinResource.m; sourceTree = "<group>"; };
 		18DFDD6725B9B13D00E26EF2 /* DataBaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseManager.swift; sourceTree = "<group>"; };
 		18DFDD6925B9B17400E26EF2 /* ConverToPinyin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverToPinyin.swift; sourceTree = "<group>"; };
+		18DFDD6B25C43CC100E26EF2 /* PinyinManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinyinManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +134,7 @@
 				18DFDD4825B70DDF00E26EF2 /* SearchViewController.swift */,
 				18DFDD6725B9B13D00E26EF2 /* DataBaseManager.swift */,
 				18DFDD6925B9B17400E26EF2 /* ConverToPinyin.swift */,
+				18DFDD6B25C43CC100E26EF2 /* PinyinManager.swift */,
 			);
 			path = Swift;
 			sourceTree = "<group>";
@@ -289,6 +292,7 @@
 				18B5980E25A96CC300B1FF52 /* DetailViewModel.swift in Sources */,
 				18DFDD5D25B7143600E26EF2 /* MDHChinesePinyinManager.m in Sources */,
 				18B5981C25A976EB00B1FF52 /* module.modulemap in Sources */,
+				18DFDD6C25C43CC100E26EF2 /* PinyinManager.swift in Sources */,
 				18DFDD6825B9B13D00E26EF2 /* DataBaseManager.swift in Sources */,
 				18B5980625A96C9400B1FF52 /* ListView.m in Sources */,
 				18B5981425A96CF200B1FF52 /* DetailViewController.swift in Sources */,
