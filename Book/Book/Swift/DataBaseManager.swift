@@ -69,4 +69,49 @@ class DataBaseManager: NSObject {
         }
     }
     
+    @objc func queryHero(_ words:String) {
+
+        self.queue.inTransaction { (db, rollback) in
+            
+            db.makeFunctionNamed("magicName", arguments: 2) { context, argc, argv in
+                
+                let firstType  = db.valueType(argv[0])
+                let secondType = db.valueType(argv[1])
+
+                if firstType != .text || secondType != .text {
+                    
+                    db.resultString("N", context: context)
+                   
+                    return;
+                }
+                
+                let firstParams  = db.valueString(argv[0])!
+                let secondParams = db.valueString(argv[1])!
+
+                if firstParams.contains(secondParams) {
+                    
+                    return db.resultString("Y", context: context)
+               
+                } else {
+                    
+                    return db.resultString("N", context: context)
+
+                }
+            }
+            
+            let rs:FMResultSet = db.executeQuery("select magicName(t.nameCN, '刘'), * from Contacts t", withArgumentsIn: [])!
+            while rs.next() {
+                    let name = rs.string(forColumnIndex: 0)
+                    print("===== \(name)")
+             }
+
+        }
+        
+        
+        
+//        FMResultSet *rs = [self.db executeQuery:@"select rowid,* from test where a = ?", @"hi"];
+
+
+    }
+    
 }

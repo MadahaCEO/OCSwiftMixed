@@ -171,8 +171,15 @@ import MDH
             DataBaseManager.sharedInstance.insertContacts(contacts)
             
         }
+        
+        
+        self.perform(#selector(queryN), with: nil, afterDelay: 2.0)
     }
     
+    @objc func queryN() {
+        
+        DataBaseManager.sharedInstance.queryHero("liu")
+    }
     
     @objc func pickPinyin(_ string:String) ->Array<String> {
                 
