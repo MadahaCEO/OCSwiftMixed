@@ -52,7 +52,26 @@ class DataBaseManager: NSObject {
             }
         }
     }
+    
+    @objc func deleteTable() {
+        
+        self.queue.inTransaction { (db, rollback) in
+            
+            let dtSQL = "drop Contacts"
+            db.executeUpdate(dtSQL, withArgumentsIn: [])
+        }
+    }
        
+    @objc func deleteAllData() {
+        
+        self.queue.inTransaction { (db, rollback) in
+            
+            let ddSQL = "delete from Contacts"
+            db.executeUpdate(ddSQL, withArgumentsIn: [])
+
+        }
+    }
+    
     @objc func insertContacts(_ contacts:Array<Array<Any>>) {
         
         self.queue.inTransaction { (db, rollback) in
@@ -101,7 +120,7 @@ class DataBaseManager: NSObject {
             
             let rs:FMResultSet = db.executeQuery("select magicName(t.nameCN, '刘'), * from Contacts t", withArgumentsIn: [])!
             while rs.next() {
-                    let name = rs.string(forColumnIndex: 0)
+                    let name = rs.string(forColumnIndex: 0)!
                     print("===== \(name)")
              }
 

@@ -178,7 +178,7 @@ import MDH
     
     @objc func queryN() {
         
-        DataBaseManager.sharedInstance.queryHero("liu")
+        DataBaseManager.sharedInstance.queryHero("刘")
     }
     
     @objc func pickPinyin(_ string:String) ->Array<String> {
