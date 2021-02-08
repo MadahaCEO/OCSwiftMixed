@@ -78,8 +78,27 @@ import MDH
             make?.height.equalTo()(40)
         }
         
+        let deleteBtn = UIButton(type: .custom)
+        deleteBtn.backgroundColor = .red
+        deleteBtn.setTitleColor(.black, for: .normal)
+        deleteBtn.setTitle("删除通讯录所有数据", for: .normal)
+        deleteBtn.titleLabel?.textAlignment = .center
+        deleteBtn.addTarget(self, action: #selector(deleteContact), for: .touchUpInside)
+        self.view.addSubview(deleteBtn)
+        deleteBtn.mas_makeConstraints { (make) in
+            make?.top.equalTo()(dbBtn.mas_bottom)?.offset()(10)
+            make?.left.right()?.equalTo()(self.view)
+            make?.height.equalTo()(40)
+        }
+        
+        
     }
     
+    
+    @objc func deleteContact() {
+        
+        DataBaseManager.sharedInstance.deleteAllData()
+    }
     
     @objc func writeContactsToDB() {
         
@@ -89,15 +108,26 @@ import MDH
             print("currentThread: \(Thread.current)")
 
 
-            let orderPinyin = PinyinManager.sharedInstance.convertToPinyin("李长行")
-            print("orderPinyin: \(orderPinyin)")
+            let people = ["刘备","关羽","张飞","诸葛亮"]
+            
+            var peopleArr:[Array<String>] = []
+
+            for str in people {
+                
+                let orderPinyin = PinyinManager.sharedInstance.convertToPinyin(str)
+                let arr = [str,orderPinyin.fullPinyin,orderPinyin.regularPinyin]
+                peopleArr.append(arr)
+            }
+
+            
+//            let orderPinyin = PinyinManager.sharedInstance.convertToPinyin("李长行")
+//            print("orderPinyin: \(orderPinyin.fullPinyin)  \(orderPinyin.regularPinyin)")
             
 //            let contacts = [["刘备","liubei","0l,0liu,1b,1be,1bei"],
 //                            ["关羽","guanyu","0g,0guan,1y,1yu"],
 //                            ["张飞","zhangfei","0z,0zhang,1f,1fe,1fei"]]
 //
-//            DataBaseManager.sharedInstance.createTable()
-//            DataBaseManager.sharedInstance.insertContacts(contacts)
+            DataBaseManager.sharedInstance.insertContacts(peopleArr)
             
         }
         

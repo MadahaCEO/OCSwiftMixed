@@ -54,6 +54,7 @@
 
 - (NSArray *)firstLetters:(NSString *)string {
 
+    [_needResultArr removeAllObjects];
     NSMutableArray *dataSource = [NSMutableArray array];
     
     if ([string isKindOfClass:[NSString class]] &&
@@ -90,6 +91,7 @@
 
 - (NSArray *)toPinyin:(NSString *)string {
     
+    [_needResultArr removeAllObjects];
     NSMutableArray *dataSource = [NSMutableArray array];
     
     if ([string isKindOfClass:[NSString class]] &&
@@ -103,11 +105,11 @@
         
         [self combine:result data:array_data curr:0 count:(int)array_data.count];
         
-        //    NSLog(@" \n%@ ",_needResultArr);
+//            NSLog(@" \n%@ ",_needResultArr);
         
         for (NSArray *nameArray in _needResultArr) {
             
-            //        NSLog(@"多音字 : %@", [nameArray componentsJoinedByString:@" "]);
+//                    NSLog(@"多音字 : %@", [nameArray componentsJoinedByString:@" "]);
             [dataSource addObject:[nameArray componentsJoinedByString:@" "]];
         }
     }

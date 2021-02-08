@@ -72,7 +72,7 @@ class DataBaseManager: NSObject {
         }
     }
     
-    @objc func insertContacts(_ contacts:Array<Array<Any>>) {
+    @objc func insertContacts(_ contacts:Array<Array<String>>) {
         
         self.queue.inTransaction { (db, rollback) in
         
@@ -99,7 +99,8 @@ class DataBaseManager: NSObject {
 
                 if firstType != .text || secondType != .text {
                     
-                    db.resultString("N", context: context)
+                    let rs = NSStringFromRange(NSMakeRange(0, 0))
+                    db.resultString(rs, context: context)
                    
                     return;
                 }

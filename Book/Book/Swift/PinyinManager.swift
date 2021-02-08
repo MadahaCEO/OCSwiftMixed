@@ -25,18 +25,18 @@ class PinyinManager: NSObject {
     }
     
     
-    @objc func convertToPinyin(_ hanzi:String) -> String {
+    
+    func convertToPinyin(_ hanzi:String) -> (fullPinyin:String, regularPinyin:String) {
     
         var orderPinyin:[String] = []
         
-        
         let arr = pyManager.toPinyin(hanzi) as! [String]
-        print("\(hanzi) 对应的拼音组合 \(arr)")
+//        print("\(hanzi) 对应的拼音组合 \(arr)")
         
-        for (idx0, str0) in arr.enumerated() {
+        for str0 in arr {
             
             let arr0 =  str0.split(separator: " ")
-            print("\(idx0) \(str0) \(arr0)")
+//            print("\(idx0) \(str0) \(arr0)")
             
             for (idx1, str1) in arr0.enumerated() {
                                    
@@ -48,7 +48,7 @@ class PinyinManager: NSObject {
 
                         if !orderPinyin.contains(str2) {
                             orderPinyin.append(str2)
-                            print("\(str2)")
+//                            print("\(str2)")
 
                         }
                     }
@@ -63,21 +63,21 @@ class PinyinManager: NSObject {
                     
                     if !orderPinyin.contains(str4) {
                         orderPinyin.append(str4)
-                        print("\(str4)")
+//                        print("\(str4)")
                     }
                     
                     if !orderPinyin.contains(str5) {
                         orderPinyin.append(str5)
-                        print("\(str5)")
+//                        print("\(str5)")
                     }
                     
                 }
             }
         }
         
-//        let str = arr.joined(separator: ",").replacingOccurrences(of: " ", with: "")
+        let fullPY = arr.joined(separator: ",").replacingOccurrences(of: " ", with: "")
                 
-        return orderPinyin.joined(separator: ",")
+        return (fullPY, orderPinyin.joined(separator: ","))
         
     }
     

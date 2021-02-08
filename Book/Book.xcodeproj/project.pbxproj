@@ -164,6 +164,7 @@
 				18DFDD4C25B7143500E26EF2 /* MDHPinYin4Objc.h */,
 				18DFDD4D25B7143500E26EF2 /* MDHHanyuPinyinOutputFormat.h */,
 				18DFDD4E25B7143500E26EF2 /* MDH_unicode_to_hanyu_pinyin.txt */,
+				18DFDD5725B7143500E26EF2 /* MDHChinesePinyinManager.h */,
 				18DFDD4F25B7143500E26EF2 /* MDHChinesePinyinManager.m */,
 				18DFDD5025B7143500E26EF2 /* NSString+MDHPinYin4Cocoa.h */,
 				18DFDD5125B7143500E26EF2 /* MDHPinyinFormatter.h */,
@@ -172,7 +173,6 @@
 				18DFDD5425B7143500E26EF2 /* MDHPinyinHelper.h */,
 				18DFDD5525B7143500E26EF2 /* MDHPinyinFormatter.m */,
 				18DFDD5625B7143500E26EF2 /* NSString+MDHPinYin4Cocoa.m */,
-				18DFDD5725B7143500E26EF2 /* MDHChinesePinyinManager.h */,
 				18DFDD5825B7143500E26EF2 /* MDHChineseToPinyinResource.m */,
 			);
 			path = PinYin;
