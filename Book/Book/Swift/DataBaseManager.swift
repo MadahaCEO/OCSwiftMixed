@@ -92,38 +92,106 @@ class DataBaseManager: NSObject {
 
         self.queue.inTransaction { (db, rollback) in
             
-            db.makeFunctionNamed("magicName", arguments: 2) { context, argc, argv in
+            db.makeFunctionNamed("magicName", arguments: 3) { context, argc, argv in
                 
                 let firstType  = db.valueType(argv[0])
                 let secondType = db.valueType(argv[1])
+                let thirdType  = db.valueType(argv[1])
 
-                if firstType != .text || secondType != .text {
-                    
+                if firstType != .text || secondType != .text || thirdType != .text {
                     let rs = NSStringFromRange(NSMakeRange(0, 0))
                     db.resultString(rs, context: context)
-                   
                     return;
                 }
                 
+                /*
+                 lb
+                 0z,0zhu,1g,1ge,2l,2li,2lia,2lian,2liang
+                 */
                 let firstParams  = db.valueString(argv[0])!
                 let secondParams = db.valueString(argv[1])!
+                let thirdParams  = db.valueString(argv[2])!
 
-                if firstParams.contains(secondParams) {
-                    
-                    return db.resultString("Y", context: context)
-               
-                } else {
-                    
-                    return db.resultString("N", context: context)
+                print("[1]: \(firstParams)  \(secondParams)  \(thirdParams)")
+                
+                let thirdArr:[String] = thirdParams.components(separatedBy: ",")
+                
+                print("[2]: \(thirdArr)")
 
+                if firstParams.count < thirdArr.count {
+                    let rs = NSStringFromRange(NSMakeRange(0, 0))
+                    db.resultString(rs, context: context)
+                    print("[3]: 当前对比数据与搜索数据不匹配")
+                    return;
                 }
+                   
+                if firstParams.count == thirdArr.count {
+                    
+                    var valid:Bool = true
+                    for (j,str) in thirdArr.enumerated() {
+                        
+                        let newStr = "\(j)\(str)"
+                        if !secondParams.contains(newStr) {
+                            valid = false
+                            break;
+                        }
+                    }
+                    
+                    var rs:String
+                    if valid {
+                        rs = NSStringFromRange(NSMakeRange(0, thirdArr.count))
+                    } else {
+                        rs = NSStringFromRange(NSMakeRange(0, 0))
+                    }
+                    
+                    db.resultString(rs, context: context)
+                    print("[4]: make rangeStr = \(rs)")
+
+                    return;
+                }
+
+                var findIdx = -1
+                
+                for i in 0..<firstParams.count-thirdArr.count {
+
+                    var valid:Bool = true
+                    for (j,str) in thirdArr.enumerated() {
+                        
+                        let newStr = "\(i+j)\(str)"
+                        print("[5]: find [\(newStr)] from \(secondParams)")
+
+                        if !secondParams.contains(newStr) {
+                            valid = false
+                            break;
+                        }
+                    }
+                    
+                    if valid {
+                        findIdx = i
+                        print("[6]: find index = \(findIdx)")
+                        break;
+                    }
+                    
+                }
+                
+                if findIdx > -1 {
+                    let rs = NSStringFromRange(NSMakeRange(findIdx, thirdArr.count))
+                    db.resultString(rs, context: context)
+                    print("[7]: make rangeStr = \(rs)")
+                    return
+                }
+                
+                let rs = NSStringFromRange(NSMakeRange(0, 0))
+                db.resultString(rs, context: context)
+                print("[8]: not find \(rs)")
             }
             
-            let rs:FMResultSet = db.executeQuery("select magicName(t.nameCN, '刘'), * from Contacts t", withArgumentsIn: [])!
+            let rs:FMResultSet = db.executeQuery("select magicName(t.nameCN, t.regularPinyin, 'l,b') as magic, * from Contacts t", withArgumentsIn: [])!
             while rs.next() {
-                    let name = rs.string(forColumnIndex: 0)!
-                    print("===== \(name)")
-             }
+                //                    let name = rs.string(forColumnIndex: 0)!
+                let name = rs.string(forColumn: "magic")!
+                print("===== \(name)")
+            }
 
         }
         
