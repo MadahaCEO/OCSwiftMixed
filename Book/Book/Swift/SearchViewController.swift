@@ -10,9 +10,10 @@ import UIKit
 import Masonry
 
 
-class SearchViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
+class SearchViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,UISearchResultsUpdating,UISearchControllerDelegate {
 
-//    var dataSource = [""]
+    var sourceArray:[String] = []
+    var resultArray:[String] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,19 +22,26 @@ class SearchViewController: UIViewController,UITableViewDelegate,UITableViewData
         
         self.view.backgroundColor = .white
         
+        self.title = "魔法姓名"
+
         self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "返回", style: .plain, target: self, action: #selector(back))
-        
+                
+        self.sourceArray.append("1")
+        self.sourceArray.append("2")
+        self.sourceArray.append("3")
+        self.sourceArray.append("4")
+        self.sourceArray.append("5")
+        self.sourceArray.append("6")
+        self.sourceArray.append("7")
+        self.sourceArray.append("8")
+        self.sourceArray.append("9")
+
         
         self.view.addSubview(self.peopleTableView)
         self.peopleTableView.mas_makeConstraints { (make) in
             make?.edges.equalTo()(self.view)
         }
 
-//        let result = ConverToPinyin.sharedInstance.object("刘奇")
-//        print(result.fullPinyin,result.regularPinyin)
-//        ConverToPinyin.sharedInstance.object("刘贝贝")
-
-        
     }
     
     
@@ -42,10 +50,7 @@ class SearchViewController: UIViewController,UITableViewDelegate,UITableViewData
         self.dismiss(animated: true, completion: nil)
     }
     
-    
-//    lazy var dataSource:NSMutableArray = {
-//        le
-//    }
+        
     
     lazy var peopleTableView:UITableView = {
         
@@ -53,14 +58,90 @@ class SearchViewController: UIViewController,UITableViewDelegate,UITableViewData
         tableView.delegate = self
         tableView.dataSource = self
         tableView.estimatedRowHeight = 40
+        tableView.tableHeaderView = self.searchController.searchBar
         return tableView
     }()
+    
+    lazy var searchController: UISearchController = {
+        let controller = UISearchController.init(searchResultsController:nil)
+        controller.searchBar.isTranslucent = false
+        controller.searchBar.barStyle = UIBarStyle.default
+        controller.searchResultsUpdater = self
+        controller.delegate = self
+        controller.obscuresBackgroundDuringPresentation = true
+//        controller.hidesNavigationBarDuringPresentation = false
+//        controller.searchBar.scopeButtonTitles = ["三国","水浒","西游记","红楼梦"]
+//        controller.searchBar.showsScopeBar = true
+        return controller;
+    }()
+    
+    
+    func updateSearchResults(for searchController: UISearchController) {
+                
+        let temp:String = searchController.searchBar.text!
+        if temp.count == 0 {
+            
+            return
+        }
+       
+        NSObject.cancelPreviousPerformRequests(withTarget: self)
+        self.perform(#selector(searchDB(str:)), with: temp, afterDelay: 0.2)
+    }
+    
+    
+    @objc func searchDB(str:String) {
+        
+        print("搜索框输入字符" + searchController.searchBar.text!)
+ 
+        self.resultArray.append(str)
+
+        self.peopleTableView.reloadData()
+    }
+    
+    
+    func willPresentSearchController(_ searchController: UISearchController) {
+                
+        
+    }
+    
+    func didPresentSearchController(_ searchController: UISearchController) {
+        
+    }
+    
+    func willDismissSearchController(_ searchController: UISearchController) {
+        
+
+    }
+      
+//    #pragma mark - UISearchResultsUpdating
+//    - (void)updateSearchResultsForSearchController:(UISearchController *)searchController {
+//
+//        NSString *inputStr = searchController.searchBar.text ;
+//        if (self.results.count > 0) {
+//            [self.results removeAllObjects];
+//        }
+//        for (NSString *str in self.datas) {
+//
+//            if ([str.lowercaseString rangeOfString:inputStr.lowercaseString].location != NSNotFound) {
+//
+//                [self.results addObject:str];
+//            }
+//        }
+//
+//        [self.tableView reloadData];
+//    }
     
     
     //MARK: UITableViewDataSource
     // cell的个数
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        
+        if (self.searchController.isActive) {
+            
+            return self.resultArray.count ;
+        }
+        
+        return self.sourceArray.count
     }
     // UITableViewCell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -70,8 +151,15 @@ class SearchViewController: UIViewController,UITableViewDelegate,UITableViewData
             cell = UITableViewCell(style: .subtitle, reuseIdentifier: cellid)
         }
         
-        cell?.textLabel?.text = "这个是标题~ + \(indexPath.row)"
-        cell?.detailTextLabel?.text = "这里是内容了油~"
+        if (self.searchController.isActive) {
+            
+            cell?.textLabel?.text = "这个是result标题~ + \(self.resultArray[indexPath.row])"
+
+        } else {
+            
+            cell?.textLabel?.text = "这个是default标题~ + \(self.sourceArray[indexPath.row])"
+        }
+
         return cell!
     }
     
