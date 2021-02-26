@@ -213,4 +213,47 @@ class PinyinManager: NSObject {
                         
             return pinyinArr
         }
+    
+    @objc func splitePinyin(py:String) -> String {
+        
+        let pyDic:Dictionary = self.readLocalFile()
+        
+        var spliteArr:[String] = []
+        var compareStr = py.lowercased()
+        var compareIdx = 0
+        
+        for (i, char) in py.lowercased().enumerated() {
+            
+            if i == compareIdx {
+                                
+                let key = String(char).lowercased()
+                let firstArr:[String] = pyDic[key] as! [String]
+                
+                var oldStr = key
+                
+                for (_, str) in firstArr.enumerated() {
+                    
+                    if compareStr.hasPrefix(str) {
+                        
+                        if str.count > oldStr.count {
+                            oldStr = str
+                        }
+                    }
+                }
+
+                compareIdx = i + oldStr.count
+
+                spliteArr.append(oldStr)
+                
+                compareStr = (py.lowercased() as NSString).substring(from: compareIdx)
+                
+                print("compareIdx: \(compareIdx)  oldStr: \(oldStr)  compareStr: \(compareStr)")
+
+            }
+        }
+
+        return spliteArr.joined(separator: ",")
+    }
+    
+        
 }

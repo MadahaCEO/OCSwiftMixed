@@ -42,6 +42,9 @@ class SearchViewController: UIViewController,UITableViewDelegate,UITableViewData
             make?.edges.equalTo()(self.view)
         }
 
+        self.navigationItem.hidesSearchBarWhenScrolling = true
+        self.navigationItem.searchController = self.searchController
+        
     }
     
     
@@ -58,7 +61,6 @@ class SearchViewController: UIViewController,UITableViewDelegate,UITableViewData
         tableView.delegate = self
         tableView.dataSource = self
         tableView.estimatedRowHeight = 40
-        tableView.tableHeaderView = self.searchController.searchBar
         return tableView
     }()
     
@@ -68,10 +70,8 @@ class SearchViewController: UIViewController,UITableViewDelegate,UITableViewData
         controller.searchBar.barStyle = UIBarStyle.default
         controller.searchResultsUpdater = self
         controller.delegate = self
-        controller.obscuresBackgroundDuringPresentation = true
-//        controller.hidesNavigationBarDuringPresentation = false
-//        controller.searchBar.scopeButtonTitles = ["三国","水浒","西游记","红楼梦"]
-//        controller.searchBar.showsScopeBar = true
+        controller.obscuresBackgroundDuringPresentation = false
+        controller.searchBar.scopeButtonTitles = ["三国","水浒","西游记","红楼梦"]
         return controller;
     }()
     
@@ -93,6 +93,9 @@ class SearchViewController: UIViewController,UITableViewDelegate,UITableViewData
         
         print("搜索框输入字符" + searchController.searchBar.text!)
  
+        let splitePYStr = PinyinManager.sharedInstance.splitePinyin(py: str)
+        print("splitePYStr: \(splitePYStr)")
+
         self.resultArray.append(str)
 
         self.peopleTableView.reloadData()
