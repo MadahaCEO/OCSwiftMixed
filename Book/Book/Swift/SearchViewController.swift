@@ -12,8 +12,8 @@ import Masonry
 
 class SearchViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,UISearchResultsUpdating,UISearchControllerDelegate {
 
-    var sourceArray:[String] = []
-    var resultArray:[String] = []
+    var sourceArray:[Dictionary<String,AnyObject>] = []
+    var resultArray:[Dictionary<String,AnyObject>] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,15 +26,15 @@ class SearchViewController: UIViewController,UITableViewDelegate,UITableViewData
 
         self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "返回", style: .plain, target: self, action: #selector(back))
                 
-        self.sourceArray.append("1")
-        self.sourceArray.append("2")
-        self.sourceArray.append("3")
-        self.sourceArray.append("4")
-        self.sourceArray.append("5")
-        self.sourceArray.append("6")
-        self.sourceArray.append("7")
-        self.sourceArray.append("8")
-        self.sourceArray.append("9")
+//        self.sourceArray.append("1")
+//        self.sourceArray.append("2")
+//        self.sourceArray.append("3")
+//        self.sourceArray.append("4")
+//        self.sourceArray.append("5")
+//        self.sourceArray.append("6")
+//        self.sourceArray.append("7")
+//        self.sourceArray.append("8")
+//        self.sourceArray.append("9")
 
         
         self.view.addSubview(self.peopleTableView)
@@ -44,6 +44,15 @@ class SearchViewController: UIViewController,UITableViewDelegate,UITableViewData
 
         self.navigationItem.hidesSearchBarWhenScrolling = true
         self.navigationItem.searchController = self.searchController
+        
+        let concurrentQueue = DispatchQueue.global()
+        concurrentQueue.async {
+            
+            let dbArray:[Dictionary<String,AnyObject>] = DataBaseManager.sharedInstance.queryAllPeople() as [Dictionary<String, AnyObject>]
+            self.sourceArray.append(contentsOf: dbArray)
+
+        }
+        
         
     }
     
@@ -96,7 +105,7 @@ class SearchViewController: UIViewController,UITableViewDelegate,UITableViewData
         let splitePYStr = PinyinManager.sharedInstance.splitePinyin(py: str)
         print("splitePYStr: \(splitePYStr)")
 
-        self.resultArray.append(str)
+//        self.resultArray.append(str)
 
         self.peopleTableView.reloadData()
     }
@@ -156,11 +165,16 @@ class SearchViewController: UIViewController,UITableViewDelegate,UITableViewData
         
         if (self.searchController.isActive) {
             
-            cell?.textLabel?.text = "这个是result标题~ + \(self.resultArray[indexPath.row])"
+            let dic:[String:Any] = self.sourceArray[indexPath.row]
+            cell?.textLabel?.text = "\(dic["nameCN"] as! String)"
+
+//            cell?.textLabel?.text = "这个是result标题~ + \(self.resultArray[indexPath.row])"
 
         } else {
             
-            cell?.textLabel?.text = "这个是default标题~ + \(self.sourceArray[indexPath.row])"
+            let dic:[String:Any] = self.sourceArray[indexPath.row]
+            
+            cell?.textLabel?.text = "\(dic["nameCN"] as! String)"
         }
 
         return cell!

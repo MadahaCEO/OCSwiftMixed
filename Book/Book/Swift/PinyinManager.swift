@@ -227,16 +227,18 @@ class PinyinManager: NSObject {
             if i == compareIdx {
                                 
                 let key = String(char).lowercased()
-                let firstArr:[String] = pyDic[key] as! [String]
-                
                 var oldStr = key
-                
-                for (_, str) in firstArr.enumerated() {
+
+                if pyDic.keys.contains(key) {
                     
-                    if compareStr.hasPrefix(str) {
+                    let firstArr:[String] = pyDic[key] as! [String]
+                    for (_, str) in firstArr.enumerated() {
                         
-                        if str.count > oldStr.count {
-                            oldStr = str
+                        if compareStr.hasPrefix(str) {
+                            
+                            if str.count > oldStr.count {
+                                oldStr = str
+                            }
                         }
                     }
                 }
@@ -248,12 +250,9 @@ class PinyinManager: NSObject {
                 compareStr = (py.lowercased() as NSString).substring(from: compareIdx)
                 
                 print("compareIdx: \(compareIdx)  oldStr: \(oldStr)  compareStr: \(compareStr)")
-
             }
         }
 
         return spliteArr.joined(separator: ",")
     }
-    
-        
 }

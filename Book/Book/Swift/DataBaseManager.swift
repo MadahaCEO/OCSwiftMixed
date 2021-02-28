@@ -72,6 +72,24 @@ class DataBaseManager: NSObject {
         }
     }
     
+    
+    @objc func queryAllPeople() -> Array<Dictionary<String, Any>>{
+        
+        var info:[Dictionary<String, Any>] = []
+        
+        self.queue.inTransaction { (db, rollback) in
+            
+            let querySQL = "select * from Contacts"
+            let rs:FMResultSet = db.executeQuery(querySQL, withArgumentsIn: [])!
+            while rs.next() {
+                let dataDic = rs.resultDictionary as! [String : Any]
+                info.append(dataDic)
+            }
+        }
+        
+        return info
+    }
+    
     @objc func insertContacts(_ contacts:Array<Array<String>>) {
         
         self.queue.inTransaction { (db, rollback) in
@@ -99,8 +117,8 @@ class DataBaseManager: NSObject {
                 let thirdType  = db.valueType(argv[1])
 
                 if firstType != .text || secondType != .text || thirdType != .text {
-                    let rs = NSStringFromRange(NSMakeRange(0, 0))
-                    db.resultString(rs, context: context)
+//                    let rs = NSStringFromRange(NSMakeRange(0, 0))
+                    db.resultString("", context: context)
                     return;
                 }
                 
@@ -119,8 +137,8 @@ class DataBaseManager: NSObject {
                 print("[2]: \(thirdArr)")
 
                 if firstParams.count < thirdArr.count {
-                    let rs = NSStringFromRange(NSMakeRange(0, 0))
-                    db.resultString(rs, context: context)
+//                    let rs = NSStringFromRange(NSMakeRange(0, 0))
+                    db.resultString("", context: context)
                     print("[3]: 当前对比数据与搜索数据不匹配")
                     return;
                 }
@@ -141,7 +159,8 @@ class DataBaseManager: NSObject {
                     if valid {
                         rs = NSStringFromRange(NSMakeRange(0, thirdArr.count))
                     } else {
-                        rs = NSStringFromRange(NSMakeRange(0, 0))
+//                        rs = NSStringFromRange(NSMakeRange(0, 0))
+                        rs = ""
                     }
                     
                     db.resultString(rs, context: context)
@@ -181,12 +200,12 @@ class DataBaseManager: NSObject {
                     return
                 }
                 
-                let rs = NSStringFromRange(NSMakeRange(0, 0))
-                db.resultString(rs, context: context)
-                print("[8]: not find \(rs)")
+//                let rs = NSStringFromRange(NSMakeRange(0, 0))
+                db.resultString("", context: context)
+                print("[8]: not find")
             }
             
-            let rs:FMResultSet = db.executeQuery("select magicName(t.nameCN, t.regularPinyin, 'l,b') as magic, * from Contacts t", withArgumentsIn: [])!
+            let rs:FMResultSet = db.executeQuery("select magicName(t.nameCN, t.regularPinyin, 'l,b') as magic, * from Contacts t where t.nameCN = ", withArgumentsIn: [])!
             while rs.next() {
                 //                    let name = rs.string(forColumnIndex: 0)!
                 let name = rs.string(forColumn: "magic")!
