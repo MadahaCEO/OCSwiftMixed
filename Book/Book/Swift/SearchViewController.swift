@@ -12,7 +12,7 @@ import Masonry
 
 class SearchViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,UISearchResultsUpdating,UISearchControllerDelegate {
 
-    var sourceArray:[Dictionary<String,AnyObject>] = []
+//    var sourceArray:[Dictionary<String,AnyObject>] = []
     var resultArray:[Dictionary<String,AnyObject>] = []
 
     override func viewDidLoad() {
@@ -26,16 +26,6 @@ class SearchViewController: UIViewController,UITableViewDelegate,UITableViewData
 
         self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "返回", style: .plain, target: self, action: #selector(back))
                 
-//        self.sourceArray.append("1")
-//        self.sourceArray.append("2")
-//        self.sourceArray.append("3")
-//        self.sourceArray.append("4")
-//        self.sourceArray.append("5")
-//        self.sourceArray.append("6")
-//        self.sourceArray.append("7")
-//        self.sourceArray.append("8")
-//        self.sourceArray.append("9")
-
         
         self.view.addSubview(self.peopleTableView)
         self.peopleTableView.mas_makeConstraints { (make) in
@@ -49,7 +39,7 @@ class SearchViewController: UIViewController,UITableViewDelegate,UITableViewData
         concurrentQueue.async {
             
             let dbArray:[Dictionary<String,AnyObject>] = DataBaseManager.sharedInstance.queryAllPeople() as [Dictionary<String, AnyObject>]
-            self.sourceArray.append(contentsOf: dbArray)
+            self.resultArray.append(contentsOf: dbArray)
 
         }
         
@@ -88,10 +78,10 @@ class SearchViewController: UIViewController,UITableViewDelegate,UITableViewData
     func updateSearchResults(for searchController: UISearchController) {
                 
         let temp:String = searchController.searchBar.text!
-        if temp.count == 0 {
-            
-            return
-        }
+//        if temp.count == 0 {
+//
+//            return
+//        }
        
         NSObject.cancelPreviousPerformRequests(withTarget: self)
         self.perform(#selector(searchDB(str:)), with: temp, afterDelay: 0.2)
@@ -101,13 +91,34 @@ class SearchViewController: UIViewController,UITableViewDelegate,UITableViewData
     @objc func searchDB(str:String) {
         
         print("搜索框输入字符" + searchController.searchBar.text!)
- 
-        let splitePYStr = PinyinManager.sharedInstance.splitePinyin(py: str)
-        print("splitePYStr: \(splitePYStr)")
+      
+        let concurrentQueue = DispatchQueue.global()
+        concurrentQueue.async {
+            
+            self.resultArray.removeAll()
 
-//        self.resultArray.append(str)
+            if str.count > 0 {
+                
+                let splitePYStr = PinyinManager.sharedInstance.splitePinyin(py: str)
+                print("splitePYStr: \(splitePYStr)")
+                
+                let dbArray = DataBaseManager.sharedInstance.queryHero(splitePYStr)
+                self.resultArray.append(contentsOf: dbArray)
+                
+            } else {
+                
+                let dbArray:[Dictionary<String,AnyObject>] = DataBaseManager.sharedInstance.queryAllPeople() as [Dictionary<String, AnyObject>]
+                self.resultArray.append(contentsOf: dbArray)
+                
+            }
+            
+            DispatchQueue.main.async {
+                
+                self.peopleTableView.reloadData()
 
-        self.peopleTableView.reloadData()
+            }
+
+        }
     }
     
     
@@ -148,12 +159,12 @@ class SearchViewController: UIViewController,UITableViewDelegate,UITableViewData
     // cell的个数
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        if (self.searchController.isActive) {
-            
-            return self.resultArray.count ;
-        }
+//        if (self.searchController.isActive) {
+//
+//            return self.resultArray.count ;
+//        }
         
-        return self.sourceArray.count
+        return self.resultArray.count
     }
     // UITableViewCell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -163,19 +174,19 @@ class SearchViewController: UIViewController,UITableViewDelegate,UITableViewData
             cell = UITableViewCell(style: .subtitle, reuseIdentifier: cellid)
         }
         
-        if (self.searchController.isActive) {
+//        if (self.searchController.isActive) {
+//
+//            let dic:[String:Any] = self.sourceArray[indexPath.row]
+//            cell?.textLabel?.text = "\(dic["nameCN"] as! String)"
+//
+////            cell?.textLabel?.text = "这个是result标题~ + \(self.resultArray[indexPath.row])"
+//
+//        } else {
             
-            let dic:[String:Any] = self.sourceArray[indexPath.row]
+            let dic:[String:Any] = self.resultArray[indexPath.row]
+            
             cell?.textLabel?.text = "\(dic["nameCN"] as! String)"
-
-//            cell?.textLabel?.text = "这个是result标题~ + \(self.resultArray[indexPath.row])"
-
-        } else {
-            
-            let dic:[String:Any] = self.sourceArray[indexPath.row]
-            
-            cell?.textLabel?.text = "\(dic["nameCN"] as! String)"
-        }
+//        }
 
         return cell!
     }

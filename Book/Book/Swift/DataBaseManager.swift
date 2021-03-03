@@ -106,7 +106,9 @@ class DataBaseManager: NSObject {
         }
     }
     
-    @objc func queryHero(_ words:String) {
+    @objc func queryHero(_ words:String) -> [Dictionary<String,AnyObject>] {
+
+        var dbArray:[Dictionary<String,AnyObject>] = []
 
         self.queue.inTransaction { (db, rollback) in
             
@@ -130,16 +132,18 @@ class DataBaseManager: NSObject {
                 let secondParams = db.valueString(argv[1])!
                 let thirdParams  = db.valueString(argv[2])!
 
-                print("[1]: \(firstParams)  \(secondParams)  \(thirdParams)")
+                let newSecond:[String] = secondParams.components(separatedBy: ",")
+                
+//                print("[1]: \(firstParams)  \(secondParams)  \(thirdParams)")
                 
                 let thirdArr:[String] = thirdParams.components(separatedBy: ",")
                 
-                print("[2]: \(thirdArr)")
+//                print("[2]: \(thirdArr)")
 
                 if firstParams.count < thirdArr.count {
 //                    let rs = NSStringFromRange(NSMakeRange(0, 0))
                     db.resultString("", context: context)
-                    print("[3]: 当前对比数据与搜索数据不匹配")
+//                    print("[3]: 当前对比数据与搜索数据不匹配")
                     return;
                 }
                    
@@ -148,23 +152,25 @@ class DataBaseManager: NSObject {
                     var valid:Bool = true
                     for (j,str) in thirdArr.enumerated() {
                         
-                        let newStr = "\(j)\(str)"
-                        if !secondParams.contains(newStr) {
+                        let newStr = String("\(j)\(str)")
+                        if !newSecond.contains(newStr) {
                             valid = false
                             break;
                         }
+                        
                     }
                     
                     var rs:String
                     if valid {
                         rs = NSStringFromRange(NSMakeRange(0, thirdArr.count))
+                        print("[找到]: make rangeStr = \(rs)   name = \(firstParams)")
                     } else {
 //                        rs = NSStringFromRange(NSMakeRange(0, 0))
                         rs = ""
                     }
                     
                     db.resultString(rs, context: context)
-                    print("[4]: make rangeStr = \(rs)")
+//                    print("[4]: make rangeStr = \(rs)")
 
                     return;
                 }
@@ -177,9 +183,9 @@ class DataBaseManager: NSObject {
                     for (j,str) in thirdArr.enumerated() {
                         
                         let newStr = "\(i+j)\(str)"
-                        print("[5]: find [\(newStr)] from \(secondParams)")
+//                        print("[5]: find [\(newStr)] from \(secondParams)")
 
-                        if !secondParams.contains(newStr) {
+                        if !newSecond.contains(newStr) {
                             valid = false
                             break;
                         }
@@ -187,7 +193,7 @@ class DataBaseManager: NSObject {
                     
                     if valid {
                         findIdx = i
-                        print("[6]: find index = \(findIdx)")
+//                        print("[6]: find index = \(findIdx)")
                         break;
                     }
                     
@@ -196,28 +202,31 @@ class DataBaseManager: NSObject {
                 if findIdx > -1 {
                     let rs = NSStringFromRange(NSMakeRange(findIdx, thirdArr.count))
                     db.resultString(rs, context: context)
-                    print("[7]: make rangeStr = \(rs)")
+                    print("[找到]: make rangeStr = \(rs)    name = \(firstParams)")
                     return
                 }
                 
 //                let rs = NSStringFromRange(NSMakeRange(0, 0))
                 db.resultString("", context: context)
-                print("[8]: not find")
+//                print("[8]: not find")
             }
             
-            let rs:FMResultSet = db.executeQuery("select magicName(t.nameCN, t.regularPinyin, 'l,b') as magic, * from Contacts t where t.nameCN = ", withArgumentsIn: [])!
+            let newWords = words.replacingOccurrences(of: ",", with: "")
+            
+            let querySQL = "select magicName(t.nameCN, t.regularPinyin, '\(words)') as magic, * from Contacts t where t.nameCN like '%\(newWords)%' or t.fullPinyin like '%\(newWords)%' or length(magicName(t.nameCN, t.regularPinyin, '\(words)')) > 0 "
+            
+
+            print("查询SQL语句: \(querySQL)")
+            let rs:FMResultSet = db.executeQuery(querySQL, withArgumentsIn: [])!
             while rs.next() {
                 //                    let name = rs.string(forColumnIndex: 0)!
-                let name = rs.string(forColumn: "magic")!
-                print("===== \(name)")
+//                let name = rs.string(forColumn: "magic")!
+                print("查询结果===== \(String(describing: rs.resultDictionary))")
+                dbArray.append(rs.resultDictionary as! [String : AnyObject])
             }
-
         }
         
-        
-        
-//        FMResultSet *rs = [self.db executeQuery:@"select rowid,* from test where a = ?", @"hi"];
-
+        return dbArray
 
     }
     
